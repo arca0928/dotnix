@@ -12,4 +12,10 @@
     systemd.network.wait-online.enable = false;
     boot.initrd.systemd.network.wait-online.enable = false;
   };
+
+  flake.modules.darwin.tailscale = {
+    services.tailscale = {
+      enable = true;
+    };
+  };
 }

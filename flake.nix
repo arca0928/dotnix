@@ -32,6 +32,10 @@
 
     import-tree.url = "github:vic/import-tree";
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
