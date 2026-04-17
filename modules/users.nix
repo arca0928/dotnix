@@ -21,5 +21,10 @@
           ];
         };
       };
+    modules.darwin.arca = {pkgs, ...}: {
+      users.users.arca = {
+        home = "/Users/arca";
+      };
+    };
   };
 }

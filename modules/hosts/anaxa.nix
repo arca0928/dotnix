@@ -4,6 +4,7 @@ let
 in
 {
   flake.modules.darwin."hosts/anaxa" = {
+    lib,
     ...
   }: {
     imports = 
@@ -11,19 +12,22 @@ in
       [
         base
         tailscale
+
+        arca
       ]
       ++ [
         {
           home-manager.users.arca.imports =
-            with flakeModules.darwin; [
+            with flakeModules.homeManager; [
             base
             terminal
-            browser
             nixvim
             tuiApps
             dots
           ];
         }
-      ]
-  }
+      ];
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-darwin";
+      system.stateVersion = 6;
+  };
 }
