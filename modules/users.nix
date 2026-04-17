@@ -21,10 +21,13 @@
           ];
         };
       };
-    modules.darwin.arca = {pkgs, ...}: {
-      users.users.arca = {
-        home = "/Users/arca";
+    modules.darwin.arca =
+      { pkgs, ... }:
+      {
+        users.users.arca = {
+          home = "/Users/arca";
+          shell = pkgs.zsh;
+        };
       };
-    };
   };
 }
