@@ -24,6 +24,7 @@ in
               terminal
               nixvim
               tuiApps
+              guiApps
               shell
               dots
             ];
