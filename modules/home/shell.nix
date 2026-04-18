@@ -6,26 +6,23 @@
         enable = true;
         initContent =
           let
-            earlyInit = lib.mkBefore ''
+            earlyInit = lib.mkOrder 500 ''
               if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
                 source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
               fi
             '';
-            Init = ''
+            themeInit = lib.mkOrder 800 ''
+              source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+            '';
+            p10kInit = lib.mkOrder 1000 ''
               [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
             '';
           in
           lib.mkMerge [
             earlyInit
-            Init
+            themeInit
+            p10kInit
           ];
-        plugins = [
-          {
-            name = "powerlevel10k";
-            src = pkgs.zsh-powerlevel10k;
-            file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-          }
-        ];
         autosuggestion.enable = true;
         autocd = true;
         enableCompletion = true;
@@ -38,6 +35,7 @@
   };
 
   flake.modules.nixos.base = {
+    programs.zsh.enable = true;
     environment.pathsToLink = [ "/share/zsh" ];
   };
 }

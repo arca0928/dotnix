@@ -11,6 +11,7 @@
         users.users.arca = {
           isNormalUser = true;
           home = "/home/arca/";
+          shell = pkgs.zsh;
           extraGroups = [
             "networkmanager"
             "wheel"

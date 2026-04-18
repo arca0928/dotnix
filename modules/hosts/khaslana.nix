@@ -30,6 +30,7 @@ in
               browser
               nixvim
               guiApps
+              shell
               tuiApps
               dots
             ];
