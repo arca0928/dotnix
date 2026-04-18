@@ -32,4 +32,12 @@
         syntaxHighlighting.enable = true;
       };
     };
+
+  flake.modules.darwin.base = {
+    environment.pathsToLink = [ "/share/zsh" ];
+  };
+
+  flake.modules.nixos.base = {
+    environment.pathsToLink = [ "/share/zsh" ];
+  };
 }
