@@ -21,6 +21,7 @@ in
           {
             home-manager.users.arca.imports = with flakeModules.homeManager; [
               base
+              chrome
               terminal
               nixvim
               tuiApps
@@ -34,4 +35,3 @@ in
       system.stateVersion = 6;
     };
 }
-
