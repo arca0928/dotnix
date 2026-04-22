@@ -27,6 +27,10 @@
         autocd = true;
         enableCompletion = true;
         syntaxHighlighting.enable = true;
+
+        shellAliases = {
+          cd = "z";
+        };
       };
     };
 
