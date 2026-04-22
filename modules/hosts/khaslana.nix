@@ -27,7 +27,7 @@ in
             home-manager.users.arca.imports = with flakeModules.homeManager; [
               base
               terminal
-              browser
+              zenBrowser
               nixvim
               guiApps
               shell
