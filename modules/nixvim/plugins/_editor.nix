@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ config, ... }:
 {
   plugins = {
     nvim-autopairs = {
       enable = true;
+      settings = {
+        check_ts = true;
+      };
       lazyLoad.settings.event = "InsertEnter";
     };
 
@@ -32,7 +35,7 @@
       folding.enable = true;
       indent.enable = true;
 
-      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+      grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
         nix
         lua
         bash
@@ -52,6 +55,14 @@
         formatters_by_ft = {
           nix = [ "nixfmt" ];
         };
+      };
+    };
+
+    dial = {
+      enable = true;
+      lazyLoad = {
+        enable = true;
+        settings.event = [ "InsertEnter" ];
       };
     };
   };
