@@ -87,6 +87,16 @@ in
       system.stateVersion = "25.11";
 
       networking.networkmanager.wifi.powersave = false;
+
+      # for nvidia gpu
+      services.xserver.videoDrivers = [ "nvidia" ];
+      hardware.graphics.enable = true;
+      hardware.nvidia = {
+        modesetting.enable = true;
+        nvidiaSettings = true;
+        powerManagement.enable = true;
+        open = false;
+      };
     };
 
   flake.modules.homeManager.base = {
