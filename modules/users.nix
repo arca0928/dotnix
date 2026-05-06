@@ -15,10 +15,8 @@
           extraGroups = [
             "networkmanager"
             "wheel"
-            "wireshark"
           ];
           packages = [
-            pkgs.wireshark
           ];
         };
       };
