@@ -29,6 +29,7 @@ in
             module
             inputs.home-manager.nixosModules.home-manager
             {
+              home-manager.useGlobalPkgs = true;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
@@ -58,6 +59,7 @@ in
             module
             inputs.home-manager.darwinModules.home-manager
             {
+              home-manager.useGlobalPkgs = true;
               home-manager.extraSpecialArgs = specialArgs;
             }
           ];
