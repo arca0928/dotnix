@@ -34,9 +34,6 @@
       };
     };
 
-    blink-cmp-spell.enable = true;
-
-
     luasnip = {
       enable = true;
     };
