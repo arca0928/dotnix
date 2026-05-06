@@ -8,7 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    wezterm.url = "github:wezterm/wezterm?dir=nix";
+    wezterm = {
+      url = "github:wezterm/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
