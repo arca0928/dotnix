@@ -31,8 +31,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    easy-hosts.url = "github:tgirlcloud/easy-hosts";
-
     import-tree.url = "github:vic/import-tree";
 
     nix-darwin = {
