@@ -4,5 +4,10 @@
 
     systemd.user.startServices = "sd-switch";
     # nixpkgs.config.allowUnfree = true;
+
+    xdg.userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
   };
 }
