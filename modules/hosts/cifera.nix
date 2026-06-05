@@ -17,8 +17,17 @@ in
         [
           base
           openssh
+
           gui
+          plasma
+          gdm
+          gnome
+
           fprintd
+          tailscale
+          xremap
+          syncthing
+          flatpak
 
           arca
         ]
@@ -33,6 +42,9 @@ in
               shell
               tuiApps
               dots
+              vicinae
+              mako
+              dconf
             ];
           }
           (modulesPath + "/installer/scan/not-detected.nix")
@@ -55,7 +67,17 @@ in
 
       boot.lanzaboote = {
         enable = true;
+        configurationLimit = 5;
         pkiBundle = "/var/lib/sbctl";
+
+        measuredBoot = {
+          enable = true;
+          pcrs = [
+            0
+            4
+            7
+          ];
+        };
       };
 
       fileSystems."/" = {
@@ -109,5 +131,9 @@ in
       # enable bluetooth
       hardware.bluetooth.enable = true;
       services.blueman.enable = true;
+
+      environment.sessionVariables = {
+        HOST = "cifera";
+      };
     };
 }

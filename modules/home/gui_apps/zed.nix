@@ -11,10 +11,18 @@
           "git-firefly"
           "unocss"
           "nix"
+          "typst"
+          "sql"
+          "qml"
         ];
         extraPackages = with pkgs; [
           nixd
           nil
+          clang-tools
+          tinymist
+          package-version-server
+          vscode-langservers-extracted
+          qt6.qtdeclarative
         ];
 
         mutableUserSettings = false;
@@ -29,6 +37,8 @@
           };
           theme = "0x96f Theme";
           buffer_font_family = "Moralerspace Neon";
+
+          load_direnv = "shell_hook";
 
           buffer_font_features = {
             calt = true;
@@ -64,6 +74,20 @@
             telemetry = {
               diagnostics = false;
               metrics = false;
+            };
+          };
+
+          lsp = {
+            tinymist = {
+              settings = {
+                exportPdf = "onSave";
+                outputPath = "$root/$dir/$name";
+              };
+            };
+            qmljs = {
+              binary = {
+                arguments = [ "-E" ];
+              };
             };
           };
         };

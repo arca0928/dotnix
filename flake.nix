@@ -42,6 +42,15 @@
       url = "github:nix-community/lanzaboote";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    xremap = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    devshells.url = "github:numtide/devshell";
+    systems.url = "github:nix-systems/default";
+
   };
 
   outputs =
@@ -49,7 +58,25 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         (inputs.import-tree ./modules)
+        inputs.devshells.flakeModule
       ];
+
+      systems = import inputs.systems;
+
+      perSystem =
+        { pkgs, ... }:
+        {
+          devshells = {
+            default = {
+              packages = with pkgs; [
+                nixd
+                nil
+                lua-language-server
+                biome
+              ];
+            };
+          };
+        };
     };
 
 }

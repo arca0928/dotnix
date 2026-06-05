@@ -1,11 +1,10 @@
 {
-  flake.modules.nixos.gui = {
-    services.desktopManager.plasma6.enable = true;
-    services.displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      settings.General.DisplayServer = "wayland";
+  flake.modules.nixos.plasma =
+    { inputs, ... }:
+    {
+      imports = [
+        inputs.silentSDDM.nixosModules.default
+      ];
+      services.desktopManager.plasma6.enable = true;
     };
-  };
 }
-

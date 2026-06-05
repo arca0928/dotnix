@@ -10,7 +10,7 @@
       {
         users.users.arca = {
           isNormalUser = true;
-          home = "/home/arca/";
+          home = "/home/arca";
           shell = pkgs.zsh;
           extraGroups = [
             "networkmanager"
@@ -26,6 +26,9 @@
         users.users.arca = {
           home = "/Users/arca";
           shell = pkgs.zsh;
+          packages = [
+            pkgs.syncthing
+          ];
         };
       };
   };
