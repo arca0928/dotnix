@@ -12,21 +12,14 @@
             "path"
             "snippets"
             "buffer"
-            "spell"
           ];
-
-          providers = {
-            spell = {
-              module = "blink-cmp-spell";
-              name = "spell";
-              score_offset = 100;
-            };
-          };
         };
         cmdline = {
-          keymap = { preset = "inherit"; };
+          keymap = {
+            preset = "inherit";
+          };
           completion = {
-              menu = {
+            menu = {
               auto_show = true;
             };
           };
