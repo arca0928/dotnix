@@ -17,12 +17,6 @@
             {
               remap = {
                 "CapsLock" = "Ctrl_L";
-                "Space" = {
-                  held = "Shift_L";
-                  alone = "Space";
-                  hold_threshold_millis = 0;
-                  tap_timeout_millis = 200;
-                };
               };
             }
           ];
