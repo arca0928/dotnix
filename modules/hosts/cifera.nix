@@ -43,7 +43,6 @@ in
               tuiApps
               dots
               vicinae
-              mako
               dconf
             ];
           }
