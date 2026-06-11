@@ -18,7 +18,8 @@ in
           base
           tailscale
           openssh
-          gui
+          plasma
+          sddm
 
           arca
         ]
