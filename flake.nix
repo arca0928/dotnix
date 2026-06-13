@@ -1,55 +1,46 @@
 {
   inputs = {
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    wezterm = {
-      url = "github:wezterm/wezterm?dir=nix";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    denix = {
+      url = "github:yunfachi/denix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nix-darwin.follows = "nix-darwin";
+    };
+    systems.url = "github:nix-systems/default";
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     silentSDDM = {
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    import-tree.url = "github:vic/import-tree";
-
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    devshells.url = "github:numtide/devshell";
-    systems.url = "github:nix-systems/default";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
   };
 
@@ -57,26 +48,54 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        (inputs.import-tree ./modules)
-        inputs.devshells.flakeModule
+        inputs.flake-parts.flakeModules.partitions
       ];
+
+      partitionedAttrs = {
+        devShells = "dev";
+        check = "dev";
+        formatter = "dev";
+      };
+      partitions = {
+        dev = {
+          extraInputsFlake = ./dev;
+          module = ./dev/flake-module.nix;
+        };
+      };
+
+      flake =
+        { denix, ... }:
+        let
+          mkConfig =
+            moduleSystem:
+            denix.lib.configurations {
+              inherit moduleSystem;
+              homeManagerUser = "arca";
+
+              paths = [
+                ./hosts
+                ./modules
+              ];
+
+              extensions = with denix.lib.extensions; [
+                args
+                (base.withConfig {
+                  args.enable = true;
+                })
+              ];
+
+              speciaArgs = {
+                inherit inputs;
+              };
+            };
+        in
+        {
+          nixosConfigurations = mkConfig "nixos";
+          darwinConfigurations = mkConfig "darwin";
+          homeConfigurations = mkConfig "home";
+        };
 
       systems = import inputs.systems;
 
-      perSystem =
-        { pkgs, ... }:
-        {
-          devshells = {
-            default = {
-              packages = with pkgs; [
-                nixd
-                nil
-                lua-language-server
-                biome
-              ];
-            };
-          };
-        };
     };
-
 }
