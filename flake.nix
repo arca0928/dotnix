@@ -53,7 +53,6 @@
 
       partitionedAttrs = {
         devShells = "dev";
-        check = "dev";
         formatter = "dev";
       };
       partitions = {
@@ -64,11 +63,10 @@
       };
 
       flake =
-        { denix, ... }:
         let
           mkConfig =
             moduleSystem:
-            denix.lib.configurations {
+            inputs.denix.lib.configurations {
               inherit moduleSystem;
               homeManagerUser = "arca";
 
@@ -77,14 +75,34 @@
                 ./modules
               ];
 
-              extensions = with denix.lib.extensions; [
+              extensions = with inputs.denix.lib.extensions; [
                 args
                 (base.withConfig {
                   args.enable = true;
+                  hosts.features = {
+                    features = [
+                      "cli"
+                      "gui"
+                      "wifi"
+                      "bluetooth"
+                    ];
+                    defaultByHostType = {
+                      desktop = [
+                        "cli"
+                        "gui"
+                      ];
+                      laptop = [
+                        "cli"
+                        "gui"
+                        "wifi"
+                        "bluetooth"
+                      ];
+                    };
+                  };
                 })
               ];
 
-              speciaArgs = {
+              specialArgs = {
                 inherit inputs;
               };
             };
