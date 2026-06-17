@@ -85,6 +85,7 @@
                       "gui"
                       "wifi"
                       "bluetooth"
+                      "secureboot"
                     ];
                     defaultByHostType = {
                       desktop = [
