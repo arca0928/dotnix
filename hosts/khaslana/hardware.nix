@@ -9,11 +9,11 @@
 delib.host {
   name = "khaslana";
 
-  homeManagerSystem = "x86_64-linux";
+  system = "x86_64-linux";
+
   home.home.stateVersion = "25.11";
 
   nixos = {
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     system.stateVersion = "25.11";
 
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
