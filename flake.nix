@@ -87,6 +87,7 @@
                       "bluetooth"
                       "secureboot"
                       "fingerprint"
+                      "xremap"
                     ];
                     defaultByHostType = {
                       desktop = [
