@@ -3,5 +3,8 @@ delib.host {
   name = "cifera";
   type = "laptop";
 
-  features = [ "secureboot" ];
+  features = [
+    "secureboot"
+    "fingerprint"
+  ];
 }

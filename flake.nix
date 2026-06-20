@@ -86,6 +86,7 @@
                       "wifi"
                       "bluetooth"
                       "secureboot"
+                      "fingerprint"
                     ];
                     defaultByHostType = {
                       desktop = [
