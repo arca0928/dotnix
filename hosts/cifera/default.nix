@@ -6,5 +6,6 @@ delib.host {
   features = [
     "secureboot"
     "fingerprint"
+    "xremap"
   ];
 }
