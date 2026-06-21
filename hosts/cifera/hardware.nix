@@ -69,15 +69,15 @@ delib.host {
           "dmask=0077"
         ];
       };
-
-      hardware = {
-        cpu.intel = {
-          npu.enable = true;
-          updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-        };
-      };
-
-      time.hardwareClockInLocalTime = true;
     };
+
+    hardware = {
+      cpu.intel = {
+        npu.enable = true;
+        updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      };
+    };
+
+    time.hardwareClockInLocalTime = true;
   };
 }

@@ -2,13 +2,17 @@
   delib,
   host,
   inputs,
+  lib,
   ...
 }:
 delib.module {
   name = "services.xremap";
 
   options = delib.singleEnableOption host.xremapFeatured;
-  nixos.always.imports = [ inputs.xremap.nixosModules.default ];
+  nixos.always = {
+    imports = [ inputs.xremap.nixosModules.default ];
+    services.xremap.enable = lib.mkDefault false;
+  };
   nixos.ifEnabled = {
     services.xremap = {
       enable = true;

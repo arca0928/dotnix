@@ -2,7 +2,7 @@
 delib.module {
   name = "programs.zed-editor";
 
-  home.ifEnabled.programs.zed-editor.useKeymas = [
+  home.ifEnabled.programs.zed-editor.userKeymaps = [
     {
       context = "vim_mode == normal || vim_mode == visual";
       bindings = {

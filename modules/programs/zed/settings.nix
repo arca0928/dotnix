@@ -5,7 +5,7 @@
 delib.module {
   name = "programs.zed-editor";
 
-  home.ifEnabled.programs.zed-editor.useSettings = {
+  home.ifEnabled.programs.zed-editor.userSettings = {
 
     vim_mode = true;
     indent_guides = {

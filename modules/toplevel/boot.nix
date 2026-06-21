@@ -23,48 +23,49 @@ delib.module {
 
       grubDevice = strOption "nodev";
     };
+  };
 
-    nixos.always.imports = [
-      inputs.lanzaboote.nixosModules.lanzaboote
-    ];
+  nixos.always.imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
 
-    nixos.ifEnabled =
-      { cfg, ... }:
-      let
-        isEfi = if cfg.mode == "uefi" then true else false;
-      in
-      {
-        boot = {
+  nixos.ifEnabled =
+    { cfg, ... }:
+    let
+      isEfi = if cfg.mode == "uefi" then true else false;
+    in
+    {
+      boot = {
+        loader = {
           efi.canTouchEfiVariables = isEfi;
-          loader = {
-            grub = lib.mkIf (cfg.loader == "grub") {
-              enable = true;
-              efiSupport = isEfi;
-            };
+          grub = lib.mkIf (cfg.loader == "grub") {
+            enable = true;
+            efiSupport = isEfi;
+            devices = [ cfg.grubDevice ];
+          };
+        };
+
+        lanzaboote = lib.mkIf (cfg.loader == "systemd-boot") {
+          enable = true;
+          configurationLimit = 5;
+          pkiBundle = "/var/lib/sbctl";
+
+          autoGenerateKeys.enable = true;
+          autoEnrollKeys = {
+            enable = true;
+            includeMicrosoftKeys = true;
+            autoReboot = true;
           };
 
-          lanzaboote = lib.mkIf (cfg.loader == "systemd-boot") {
+          measuredBoot = {
             enable = true;
-            configurationLimit = 5;
-            pkiBundle = "/var/lib/sbctl";
-
-            autoGenerateKeys.enable = true;
-            autoEnrollKeys = {
-              enable = true;
-              includeMicrosoftKeys = true;
-              autoReboot = true;
-            };
-
-            measuredBoot = {
-              enable = true;
-              pcrs = [
-                0
-                4
-                7
-              ];
-            };
+            pcrs = [
+              0
+              4
+              7
+            ];
           };
         };
       };
-  };
+    };
 }

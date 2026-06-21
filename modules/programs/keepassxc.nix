@@ -9,7 +9,7 @@ delib.module {
   options = delib.singleEnableOption host.guiFeatured;
 
   home.ifEnabled = {
-    programs.keepasxac = {
+    programs.keepassxc = {
       enable = true;
 
       settings = {

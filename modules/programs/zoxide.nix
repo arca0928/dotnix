@@ -5,7 +5,9 @@ delib.module {
   options = delib.singleEnableOption host.cliFeatured;
 
   home.ifEnabled = {
-    enable = true;
-    enableZshIntegration = true;
+    programs.zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
