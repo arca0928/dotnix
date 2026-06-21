@@ -29,46 +29,45 @@ delib.host {
       };
       kernelModules = [ "kvm-intel" ];
       extraModulePackages = [ ];
-      fileSystems = {
+    };
+    fileSystems = {
+      "/" = {
+        device = "/dev/disk/by-label/NixOS-ROOT";
+        fsType = "btrfs";
+        options = [ "subvol=root" ];
+      };
 
-        "/" = {
-          device = "/dev/disk/by-label/NixOS-ROOT";
-          fsType = "btrfs";
-          options = [ "subvol=root" ];
-        };
+      "/home" = {
+        device = "/dev/disk/by-label/NixOS-ROOT";
+        fsType = "btrfs";
+        options = [ "subvol=home" ];
+      };
 
-        "/home" = {
-          device = "/dev/disk/by-label/NixOS-ROOT";
-          fsType = "btrfs";
-          options = [ "subvol=home" ];
-        };
+      "/nix" = {
+        device = "/dev/disk/by-label/NixOS-ROOT";
+        fsType = "btrfs";
+        options = [
+          "subvol=nix"
+          "noatime"
+        ];
+      };
 
-        "/nix" = {
-          device = "/dev/disk/by-label/NixOS-ROOT";
-          fsType = "btrfs";
-          options = [
-            "subvol=nix"
-            "noatime"
-          ];
-        };
+      "/swap" = {
+        device = "/dev/disk/by-label/NixOS-ROOT";
+        fsType = "btrfs";
+        options = [
+          "subvol=swap"
+          "noatime"
+        ];
+      };
 
-        "/swap" = {
-          device = "/dev/disk/by-label/NixOS-ROOT";
-          fsType = "btrfs";
-          options = [
-            "subvol=swap"
-            "noatime"
-          ];
-        };
-
-        "/boot" = {
-          device = "/dev/disk/by-label/ESP";
-          fsType = "vfat";
-          options = [
-            "fmask=0077"
-            "dmask=0077"
-          ];
-        };
+      "/boot" = {
+        device = "/dev/disk/by-label/ESP";
+        fsType = "vfat";
+        options = [
+          "fmask=0077"
+          "dmask=0077"
+        ];
       };
 
       hardware = {
