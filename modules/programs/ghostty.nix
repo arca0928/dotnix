@@ -29,6 +29,9 @@ delib.module {
         cursor-style = "block";
         cursor-style-blink = false;
         shell-integration-features = "no-cursor";
+
+        background-opacity = 0.55;
+        background-blur = true;
       };
     };
   };
