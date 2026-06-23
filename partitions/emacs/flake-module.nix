@@ -16,6 +16,7 @@
         initFiles = [ (pkgs.tangleOrgBabelFile "init.el" ./init.org { }) ];
         emacsPackage = pkgs.emacs-git-pgtk;
         extraRecipeDir = ./recipes;
+        exportManifest = true;
       };
 
       package = (
