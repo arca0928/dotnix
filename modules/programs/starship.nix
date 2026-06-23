@@ -42,7 +42,7 @@ delib.module {
         };
 
         directory = {
-          format = "[ $path]($style)[$read_only]($read_only_style) ";
+          format = "[ $path ]($style)[$read_only]($read_only_style)";
           style = "bold 39 bg:236";
           read_only = "";
           read_only_style = "196 bg:236";
@@ -71,7 +71,7 @@ delib.module {
         };
 
         git_status = {
-          format = "([$ahead_behind$stashed$conflicted$staged$modified$untracked$renamed$deleted]($style)) ";
+          format = "([$ahead_behind$stashed$conflicted$staged$modified$untracked$renamed$deleted ]($style))";
           style = "bg:236";
           ahead = "[ ⇡$count](76 bg:236)";
           behind = "[ ⇣$count](76 bg:236)";
