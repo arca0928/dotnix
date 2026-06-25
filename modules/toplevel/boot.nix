@@ -61,6 +61,7 @@ delib.module {
             enable = true;
             pcrs = [
               0
+              2
               4
               7
             ];

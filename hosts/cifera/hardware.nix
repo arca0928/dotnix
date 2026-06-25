@@ -17,7 +17,10 @@ delib.host {
 
     boot = {
       initrd = {
-        luks.devices."luks".device = "/dev/disk/by-label/NixOS-LUKS";
+        luks.devices."luks" = {
+          device = "/dev/disk/by-label/NixOS-LUKS";
+          crypttabExtraOpts = [ "tpm2-device=auto" ];
+        };
 
         availableKernelModules = [
           "xhci_pci"
