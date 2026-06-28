@@ -1,3 +1,131 @@
+enable lexical binding
 #+begin_src elisp
 ;;; -*- lexical-binding: t -*-
+#+end_src
+
+#+begin_src elisp
+(eval-when-compile (require 'setup))
+#+end_src
+
+#+begin_src elisp
+  (setup-define :package
+    (lambda (package) nil)
+    :shorthand 'cadr
+    :repeatable 't)
+#+end_src
+
+#+begin_src elisp
+  (setup-define :opt
+    (lambda (&rest pairs) `(setopt ,@pairs))
+  	    :after-loaded t)
+#+end_src
+
+キーマップ設定
+#+begin_src elisp
+  (keymap-global-set "RET" 'electric-newline-and-maybe-indent)
+#+end_src
+
+electric-pair-mode
+#+begin_src elisp
+  (setup electric-pair-mode
+    (:opt electric-pair-pairs '((?\" . ?\") (?\{ . ?\})))
+    (electric-pair-mode t))
+#+end_src
+
+** 基本設定
+
+#+begin_src elisp
+  (setup emacs
+    (:opt inhibit-startup-screen t
+  	ring-bell-function 'ignore))
+#+end_src
+
+
+autorevert
+#+begin_src elisp
+  (setup autorevert
+    (:opt auto-revert-interval 1)
+    (global-auto-revert-mode t))
+#+end_src
+
+#+begin_src elisp
+  (setup magit (:package magit))
+#+end_src
+
+テーマ設定
+solarized-zenburnを使用している。
+#+begin_src elisp
+  (setup solarized-theme
+    (:package solarized-theme)
+    (load-theme 'solarized-zenburn t))
+#+end_src
+
+行番号の表示に関連する設定。
+画面左端に行番号を表示したりステータスラインに表示する行番号の最大を上げたり。
+#+begin_src elisp
+  (setup column-number
+    (:option line-number-display-limit-with 100000
+  	   display-line-numbers-width-start t)
+    (column-number-mode t)
+    (global-display-line-numbers-mode t))
+#+end_src
+
+Twist.el
+lockしてrebuildするとemacsの設定をホットリロードしてくれる？
+#+begin_src elisp
+  (setup twist (:package twist) 
+         (:with-hook emacs-startup-hook
+  	 (:hook twist-watch-mode)))
+#+end_src
+
+括弧の表示に関連する設定
+rainbow-delimitersは括弧を虹色に表示してくれるパッケージ。
+#+begin_src elisp
+  (setup paren
+    (:package rainbow-delimiters)
+    (:opt show-paren-delay 0)
+    (:with-mode (prog-mode) (:hook rainbow-delimiters-mode))
+    (show-paren-mode t))
+#+end_src
+
+** 補完関係
+
+#+begin_src elisp
+  (setup vertico
+    (:package vertico)
+    (vertico-mode t))
+#+end_src
+
+#+Begin_src elisp
+  (setup consult
+    (:package consult)
+    (:with-mode (completion-list-mode)
+     (:hook consult-preview-at-point-mode)))
+#+end_src
+
+#+begin_src elisp
+  (setup marginalia
+    (:package marginalia)
+    (marginalia-mode t))
+#+end_src
+
+#+begin_src elisp
+  (setup corfu
+    (:package corfu)
+    (:opt corfu-auto t
+  	corfu-auto-delay 0.0
+  	corfu-auto-prefix 1
+  	corfu-popupinfo-delay nil)
+    (:with-map corfu-map
+      (:bind
+       "M-n" corfu-next
+       "M-p" corfu-previous))
+    (global-corfu-mode t))
+#+end_src
+
+#+begin_src elisp
+  (setup cape
+    (:package cape)
+    (:when-loaded
+      (add-to-list 'completion-at-point-functions #'cape-file)))
 #+end_src

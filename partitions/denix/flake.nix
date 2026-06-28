@@ -35,6 +35,7 @@
     };
     twist.url = "github:emacs-twist/twist.nix";
     org-babel.url = "github:emacs-twist/org-babel";
+    lsp-proxy.url = "github:jadestrong/lsp-proxy";
 
     xremap = {
       url = "github:xremap/nix-flake";

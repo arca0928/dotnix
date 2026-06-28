@@ -12,6 +12,7 @@
       ];
 
       partitionedAttrs = {
+        apps = "emacs";
         devShells = "dev";
         formatter = "dev";
         packages = "emacs";
