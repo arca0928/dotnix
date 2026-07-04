@@ -24,6 +24,10 @@
       url = "github:uiriansan/SilentSDDM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    shojiwm.url = "github:bea4dev/ShojiWM";
+    xwayland-satellite-shojiwm.url = "github:bea4dev/xwayland-satellite/shojiwm";
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
