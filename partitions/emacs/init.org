@@ -4,7 +4,7 @@ enable lexical binding
 #+end_src
 
 #+begin_src elisp
-(eval-when-compile (require 'setup))
+  (eval-when-compile (require 'setup))
 #+end_src
 
 #+begin_src elisp
@@ -40,7 +40,6 @@ electric-pair-mode
   	ring-bell-function 'ignore))
 #+end_src
 
-
 autorevert
 #+begin_src elisp
   (setup autorevert
@@ -71,7 +70,7 @@ solarized-zenburnを使用している。
 #+end_src
 
 Twist.el
-lockしてrebuildするとemacsの設定をホットリロードしてくれる？
+lockしてrebuildするとemacsの設定をホットリロードしてくれる
 #+begin_src elisp
   (setup twist (:package twist) 
          (:with-hook emacs-startup-hook
@@ -86,6 +85,12 @@ rainbow-delimitersは括弧を虹色に表示してくれるパッケージ。
     (:opt show-paren-delay 0)
     (:with-mode (prog-mode) (:hook rainbow-delimiters-mode))
     (show-paren-mode t))
+#+end_src
+
+#+begin_src elisp
+  (setup direnv
+    (:package direnv)
+    (direnv-mode))
 #+end_src
 
 ** 補完関係
@@ -128,4 +133,11 @@ rainbow-delimitersは括弧を虹色に表示してくれるパッケージ。
     (:package cape)
     (:when-loaded
       (add-to-list 'completion-at-point-functions #'cape-file)))
+#+end_src
+
+** LSP
+
+#+begin_src elisp
+  (setup lsp-proxy
+    (:package lsp-proxy))
 #+end_src

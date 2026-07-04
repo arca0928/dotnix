@@ -31,10 +31,40 @@
       repo = "corfu";
       type = "github";
     };
+    dash = {
+      flake = false;
+      owner = "magnars";
+      repo = "dash.el";
+      type = "github";
+    };
+    direnv = {
+      flake = false;
+      owner = "wbolster";
+      repo = "emacs-direnv";
+      type = "github";
+    };
+    "f" = {
+      flake = false;
+      owner = "rejeep";
+      repo = "f.el";
+      type = "github";
+    };
+    ht = {
+      flake = false;
+      owner = "Wilfred";
+      repo = "ht.el";
+      type = "github";
+    };
     llama = {
       flake = false;
       owner = "tarsius";
       repo = "llama";
+      type = "github";
+    };
+    lsp-proxy = {
+      flake = false;
+      owner = "jadestrong";
+      repo = "lsp-proxy";
       type = "github";
     };
     magit = {
@@ -59,6 +89,12 @@
       flake = false;
       owner = "Fanael";
       repo = "rainbow-delimiters";
+      type = "github";
+    };
+    "s" = {
+      flake = false;
+      owner = "magnars";
+      repo = "s.el";
       type = "github";
     };
     setup = {
