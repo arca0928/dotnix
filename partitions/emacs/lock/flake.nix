@@ -85,6 +85,18 @@
       repo = "marginalia";
       type = "github";
     };
+    nix-mode = {
+      flake = false;
+      owner = "NixOS";
+      repo = "nix-mode";
+      type = "github";
+    };
+    orderless = {
+      flake = false;
+      owner = "oantolin";
+      repo = "orderless";
+      type = "github";
+    };
     rainbow-delimiters = {
       flake = false;
       owner = "Fanael";

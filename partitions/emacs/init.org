@@ -18,6 +18,9 @@ enable lexical binding
   (setup-define :opt
     (lambda (&rest pairs) `(setopt ,@pairs))
   	    :after-loaded t)
+  (setup-define :global
+    (lambda (&rest pairs)
+      `(keymap-global-set ,@pairs)))
 #+end_src
 
 キーマップ設定
@@ -104,6 +107,7 @@ rainbow-delimitersは括弧を虹色に表示してくれるパッケージ。
 #+Begin_src elisp
   (setup consult
     (:package consult)
+    (:global "C-x b" 'consult-buffer)
     (:with-mode (completion-list-mode)
      (:hook consult-preview-at-point-mode)))
 #+end_src
@@ -115,11 +119,19 @@ rainbow-delimitersは括弧を虹色に表示してくれるパッケージ。
 #+end_src
 
 #+begin_src elisp
+  (setup orderless
+    (:package orderless)
+    (:opt completion-styles '(orderless basic)
+  	completion-category-overrides '((file) (styles partial-completion))))
+#+end_src
+
+#+begin_src elisp
   (setup corfu
     (:package corfu)
     (:opt corfu-auto t
-  	corfu-auto-delay 0.0
+  	corfu-auto-delay 0.05
   	corfu-auto-prefix 1
+  	corfu-cycle t
   	corfu-popupinfo-delay nil)
     (:with-map corfu-map
       (:bind
@@ -140,4 +152,15 @@ rainbow-delimitersは括弧を虹色に表示してくれるパッケージ。
 #+begin_src elisp
   (setup lsp-proxy
     (:package lsp-proxy))
+#+end_src
+
+** 言語関係
+
+*** Nix
+
+Nix-mode
+#+begin_src elisp
+  (setup nix-mode
+    (:package nix-mode)
+    (:match-file "\\.nix\\"))
 #+end_src

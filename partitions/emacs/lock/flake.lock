@@ -224,6 +224,38 @@
         "type": "github"
       }
     },
+    "nix-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1682109415,
+        "narHash": "sha256-W/bxCAn4cvzKGbhILxtTiWJ5Wln2w6g4TPgk+ziCXsQ=",
+        "owner": "NixOS",
+        "repo": "nix-mode",
+        "rev": "719feb7868fb567ecfe5578f6119892c771ac5e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nix-mode",
+        "type": "github"
+      }
+    },
+    "orderless": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782652430,
+        "narHash": "sha256-s/xX72yq0gjC+RmBtZGrRbKS566QBnFwymJNe/c+EOQ=",
+        "owner": "oantolin",
+        "repo": "orderless",
+        "rev": "0ffd9d6903714c1f6d8fcbb6a20941fb33dd7ae5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oantolin",
+        "repo": "orderless",
+        "type": "github"
+      }
+    },
     "rainbow-delimiters": {
       "flake": false,
       "locked": {
@@ -256,6 +288,8 @@
         "magit": "magit",
         "magit-section": "magit-section",
         "marginalia": "marginalia",
+        "nix-mode": "nix-mode",
+        "orderless": "orderless",
         "rainbow-delimiters": "rainbow-delimiters",
         "s": "s",
         "setup": "setup",
