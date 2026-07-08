@@ -13,7 +13,7 @@ delib.module {
       (pkgs.discord.override {
         withEquicord = true;
         withOpenASAR = true;
-        commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime";
+        commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --force-device-scale-factor=1.0";
       })
     ];
   };
