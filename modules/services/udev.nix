@@ -4,7 +4,6 @@ delib.module {
 
   nixos.always = {
     services.udev = {
-
       packages = with pkgs; [
         qmk
         qmk-udev-rules
@@ -12,7 +11,6 @@ delib.module {
         via
         vial
       ];
-
     };
   };
 }
