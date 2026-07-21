@@ -32,6 +32,10 @@ delib.module {
 
         background-opacity = 0.55;
         background-blur = true;
+
+        keybind = [
+          "ctrl+enter=unbind"
+        ];
       };
     };
   };
