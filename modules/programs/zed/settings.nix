@@ -1,5 +1,6 @@
 {
   delib,
+  pkgs,
   ...
 }:
 delib.module {
@@ -62,6 +63,27 @@ delib.module {
           outputPath = "$root/$dir/$name";
         };
       };
+
+      biome = {
+        binary = {
+          path = "${pkgs.biome}/bin/biome";
+          arguments = [ "lsp-proxy" ];
+        };
+        settings.require_config_file = true;
+      };
+
+      rust-analyzer.binary.path = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+    };
+
+    languages = {
+      Nix.language_servers = [
+        "nixd"
+        "!nil"
+      ];
+      Typst.language_servers = [ "tinymist" ];
+      QML.language_servers = [ "qmljs" ];
+
+      Astro.language_servers = [ "biome" ];
     };
   };
 }

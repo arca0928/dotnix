@@ -21,7 +21,6 @@ delib.module {
         "astro"
         "biome"
         "git-firefly"
-        "unocss"
         "nix"
         "typst"
         "sql"
@@ -33,6 +32,9 @@ delib.module {
         clang-tools
         tinymist
         package-version-server
+        biome
+        qt6.qtdeclarative
+        rust-analyzer
       ];
     };
   };
