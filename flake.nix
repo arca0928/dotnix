@@ -1,7 +1,6 @@
 {
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
   };
 
   outputs =
@@ -18,7 +17,6 @@
         packages = "emacs";
         nixosConfigurations = "denix";
         homeConfigurations = "denix";
-        darwinConfigurations = "denix";
       };
       partitions = {
         dev = {
@@ -37,7 +35,7 @@
         };
       };
 
-      systems = import inputs.systems;
+      systems = [ "x86_64-linux" ];
 
     };
 }
