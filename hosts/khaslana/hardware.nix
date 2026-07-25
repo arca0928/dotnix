@@ -14,6 +14,7 @@ delib.host {
   home.home.stateVersion = "25.11";
 
   nixos = {
+    myconfig.boot.mode = "uefi";
     system.stateVersion = "25.11";
 
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
@@ -34,10 +35,7 @@ delib.host {
       kernelModules = [ "kvm-intel" ];
       extraModulePackages = [ ];
 
-      loader.grub = {
-        gfxmodeEfi = "1920x1080";
-        device = "nodev";
-      };
+      loader.grub.gfxmodeEfi = "1920x1080";
 
       kernelPackages = pkgs.linuxPackages_xanmod_latest;
     };

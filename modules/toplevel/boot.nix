@@ -19,9 +19,11 @@ delib.module {
       mode = enumOption [
         "uefi"
         "bios"
-      ] (if builtins.pathExists /sys/firmware/efi/efivars then "uefi" else "bios");
+      ] "uefi";
 
       grubDevice = strOption "nodev";
+      generateSecureBootKeys = boolOption false;
+      enrollSecureBootKeys = boolOption false;
     };
   };
 
@@ -50,11 +52,11 @@ delib.module {
           configurationLimit = 5;
           pkiBundle = "/var/lib/sbctl";
 
-          autoGenerateKeys.enable = true;
+          autoGenerateKeys.enable = cfg.generateSecureBootKeys;
           autoEnrollKeys = {
-            enable = true;
+            enable = cfg.enrollSecureBootKeys;
             includeMicrosoftKeys = true;
-            autoReboot = true;
+            autoReboot = false;
           };
 
           measuredBoot = {

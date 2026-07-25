@@ -12,6 +12,12 @@ delib.host {
   home.home.stateVersion = "25.11";
 
   nixos = {
+    myconfig.boot = {
+      mode = "uefi";
+      generateSecureBootKeys = true;
+      enrollSecureBootKeys = true;
+    };
+
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
     system.stateVersion = "25.11";
 
