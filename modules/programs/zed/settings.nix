@@ -49,11 +49,11 @@ delib.module {
         ss09 = true;
         ss10 = true;
       };
+    };
 
-      telemetry = {
-        diagnostics = false;
-        metrics = false;
-      };
+    telemetry = {
+      diagnostics = false;
+      metrics = false;
     };
 
     lsp = {

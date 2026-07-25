@@ -11,4 +11,6 @@ delib.module {
   nixos.always.imports = [
     inputs.mangowc.nixosModules.mango
   ];
+
+  nixos.ifEnabled.programs.mango.enable = true;
 }

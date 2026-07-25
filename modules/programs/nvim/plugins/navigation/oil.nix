@@ -12,7 +12,7 @@ delib.module {
         view_options = {
           show_hidden = true;
         };
-        win_opitons = {
+        win_options = {
           signcolumn = "yes:2";
         };
       };
