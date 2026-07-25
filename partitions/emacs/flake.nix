@@ -26,7 +26,10 @@
       flake = false;
     };
 
-    lsp-proxy.url = "github:jadestrong/lsp-proxy";
+    lsp-proxy = {
+      url = "github:jadestrong/lsp-proxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: {

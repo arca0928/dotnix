@@ -25,9 +25,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    shojiwm.url = "github:bea4dev/ShojiWM";
-    xwayland-satellite-shojiwm.url = "github:bea4dev/xwayland-satellite/shojiwm";
-
     nixvim = {
       url = "github:nix-community/nixvim";
     };
@@ -38,7 +35,10 @@
     };
     twist.url = "github:emacs-twist/twist.nix";
     org-babel.url = "github:emacs-twist/org-babel";
-    lsp-proxy.url = "github:jadestrong/lsp-proxy";
+    lsp-proxy = {
+      url = "github:jadestrong/lsp-proxy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     xremap = {
       url = "github:xremap/nix-flake";
