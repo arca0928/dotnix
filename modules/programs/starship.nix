@@ -6,7 +6,7 @@
 delib.module {
   name = "programs.starship";
 
-  options = delib.singleEnableOption host.guiFeatured;
+  options = delib.singleEnableOption host.cliFeatured;
 
   home.ifEnabled = {
     programs.starship = {
