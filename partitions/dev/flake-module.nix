@@ -10,7 +10,6 @@
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
           nixd
-          nil
         ];
         shellHook = ''
           ${config.pre-commit.shellHook}

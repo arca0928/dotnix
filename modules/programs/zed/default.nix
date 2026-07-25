@@ -28,7 +28,6 @@ delib.module {
       ];
       extraPackages = with pkgs; [
         nixd
-        nil
         clang-tools
         tinymist
         package-version-server

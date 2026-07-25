@@ -14,7 +14,6 @@ delib.module {
     lsp = {
       servers = {
         nixd.enable = true;
-        nil.enable = true;
         biome.enable = true;
         astro.enable = true;
         clangd.enable = true;
