@@ -15,11 +15,13 @@ delib.module {
       servers = {
         nixd.enable = true;
         biome.enable = true;
+        denols.enable = true;
         astro.enable = true;
         clangd.enable = true;
         rust_analyzer.enable = true;
         tailwindcss.enable = true;
         tinymist.enable = true;
+        fennel_ls.enable = true;
       };
     };
   };
