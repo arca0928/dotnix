@@ -6,5 +6,6 @@ delib.module {
     noice = {
       enable = true;
     };
+    notify.enable = true;
   };
 }

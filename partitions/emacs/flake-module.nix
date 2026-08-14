@@ -18,7 +18,7 @@
         extraPackages = [
           "setup"
         ];
-        emacsPackage = pkgs.emacs-git-pgtk;
+        emacsPackage = pkgs.emacs-pgtk;
         extraRecipeDir = ./recipes;
         exportManifest = true;
       };

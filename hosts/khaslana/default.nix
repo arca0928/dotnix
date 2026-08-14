@@ -4,4 +4,6 @@ delib.host {
   type = "desktop";
 
   features = [ "wifi" ];
+
+  myconfig.programs.emacs.enable = false;
 }

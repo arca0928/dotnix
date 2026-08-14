@@ -15,6 +15,7 @@ delib.module {
       servers = {
         nixd.enable = true;
         biome.enable = true;
+        basedpyright.enable = true;
         denols.enable = true;
         astro.enable = true;
         clangd.enable = true;
