@@ -36,6 +36,8 @@ delib.module {
         keybind = [
           "ctrl+enter=unbind"
         ];
+
+        window-decoration = "server";
       };
     };
   };
