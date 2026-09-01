@@ -1,11 +1,22 @@
-{ delib, pkgs, ... }:
+{
+  delib,
+  inputs,
+  pkgs,
+  ...
+}:
 delib.module {
   name = "xdg";
 
   nixos.always = {
     xdg.portal = {
       enable = true;
-      config.common.default = "*";
+      config = {
+        common.default = "*";
+
+        shojiwm = {
+          default = "shojiwm";
+        };
+      };
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome

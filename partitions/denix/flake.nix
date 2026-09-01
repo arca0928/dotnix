@@ -56,7 +56,7 @@
     };
 
     shojiwm = {
-      url = "git+file:/home/arca/tmp/shojiwm";
+      url = "github:bea4dev/ShojiWM";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
