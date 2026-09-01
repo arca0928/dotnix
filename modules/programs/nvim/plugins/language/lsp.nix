@@ -14,6 +14,7 @@ delib.module {
     lsp = {
       servers = {
         nixd.enable = true;
+        nushell.enable = true;
         biome.enable = true;
         basedpyright.enable = true;
         denols.enable = true;

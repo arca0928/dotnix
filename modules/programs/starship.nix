@@ -12,7 +12,6 @@ delib.module {
     programs.starship = {
       enable = true;
       enableZshIntegration = true;
-      enableNushellIntegration = true;
       settings = {
         "$schema" = "https://starship.rs/config-schema.json";
 
