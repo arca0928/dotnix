@@ -10,6 +10,7 @@ delib.module {
     {
       users = {
         groups.${username} = { };
+        groups.cloudflared = { };
 
         users.${username} = {
           isNormalUser = true;
@@ -19,6 +20,11 @@ delib.module {
             "wheel"
             "networkmanager"
           ];
+        };
+
+        users.cloudflared = {
+          isSystemUser = true;
+          group = "cloudflared";
         };
       };
     };
