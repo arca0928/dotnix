@@ -1,6 +1,9 @@
 keys:
   - &arca age1nsxxap6ddadu496v5scd3n907s9n49cyrt4j95e7emhme9em7ynqaru3da
+  - &arca-cifera age17u8h57gvz3lzzcwhg8zlzaujtvpegaclxvgpp3lvljwzsmstv5csujp5wk
+
   - &khaslana age1e86uastthm0yd8qkeaflceugaxy72ju28j30knm077peffyw8ehswlwtw0
+  - &cifera age1yk3lheuh9mx0c8g8409n4nazfn5vrr0ts0n7203upee74f3pxvts8lr8py
 
 creation_rules:
   - path_regex: secrets/common\.yaml$
