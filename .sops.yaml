@@ -1,0 +1,16 @@
+keys:
+  - &arca age1nsxxap6ddadu496v5scd3n907s9n49cyrt4j95e7emhme9em7ynqaru3da
+  - &khaslana age1e86uastthm0yd8qkeaflceugaxy72ju28j30knm077peffyw8ehswlwtw0
+
+creation_rules:
+  - path_regex: secrets/common\.yaml$
+    key_groups:
+      - age:
+        - *arca
+        - *khaslana
+
+  - path_regex: secrets/hosts/khaslana\.yaml$
+    key_groups:
+      - age:
+        - *arca
+        - *khaslana
