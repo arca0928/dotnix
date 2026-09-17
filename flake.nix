@@ -17,6 +17,7 @@
         packages = "emacs";
         nixosConfigurations = "denix";
         homeConfigurations = "denix";
+        darwinConfigurations = "denix";
       };
       partitions = {
         dev = {
@@ -35,7 +36,9 @@
         };
       };
 
-      systems = [ "x86_64-linux" ];
-
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
     };
 }

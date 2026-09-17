@@ -1,4 +1,9 @@
-{ delib, inputs, ... }:
+{
+  delib,
+  inputs,
+  pkgs,
+  ...
+}:
 delib.module {
   name = "programs.nixvim";
 
@@ -11,7 +16,7 @@ delib.module {
       enable = true;
 
       viAlias = true;
-      waylandSupport = true;
+      waylandSupport = pkgs.stdenv.hostPlatform.isLinux;
 
       editorconfig.enable = true;
       clipboard.register = "unnamedplus";

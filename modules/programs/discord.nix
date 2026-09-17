@@ -1,6 +1,7 @@
 {
   delib,
   host,
+  lib,
   pkgs,
   ...
 }:
@@ -13,7 +14,7 @@ delib.module {
       (pkgs.discord.override {
         withEquicord = true;
         withOpenASAR = false;
-        commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --force-device-scale-factor=1.0";
+        commandLineArgs = lib.optionalString pkgs.stdenv.hostPlatform.isLinux "--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime --force-device-scale-factor=1.0";
       })
     ];
   };

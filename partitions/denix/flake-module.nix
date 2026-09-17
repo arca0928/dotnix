@@ -51,5 +51,6 @@ in
   flake = {
     nixosConfigurations = mkConfig "nixos";
     homeConfigurations = mkConfig "home";
+    darwinConfigurations = mkConfig "darwin";
   };
 }

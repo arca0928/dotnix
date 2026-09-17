@@ -2,11 +2,12 @@
   delib,
   host,
   inputs,
+  pkgs,
   ...
 }:
 delib.module {
   name = "programs.mango";
-  options = delib.singleEnableOption host.guiFeatured;
+  options = delib.singleEnableOption (host.guiFeatured && pkgs.stdenv.hostPlatform.isLinux);
 
   nixos.always.imports = [
     inputs.mangowc.nixosModules.mango

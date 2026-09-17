@@ -42,10 +42,13 @@ delib.module {
       '';
 
       use_ime = true;
-      enable_wayland = true;
+      enable_wayland = pkgs.stdenv.hostPlatform.isLinux;
 
       window_background_opacity = 0.6;
-      wayland_window_background_blur = true;
+      wayland_window_background_blur = pkgs.stdenv.hostPlatform.isLinux;
+
+      macos_forward_to_ime_modifier_mask = "SHIFT|CTRL";
+      macos_window_background_blur = 25;
     };
 
     extraConfig = ''
