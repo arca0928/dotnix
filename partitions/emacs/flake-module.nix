@@ -17,6 +17,8 @@
         initParser = inputs.twist.lib.parseSetup { inherit (inputs.nixpkgs) lib; } { };
         extraPackages = [
           "setup"
+          # Magit needs a newer Transient than the one bundled with Emacs 30.
+          "transient"
         ];
         emacsPackage = pkgs.emacs-pgtk;
         extraRecipeDir = ./recipes;

@@ -120,6 +120,12 @@
       repo = "solarized-emacs";
       type = "github";
     };
+    transient = {
+      flake = false;
+      owner = "magit";
+      repo = "transient";
+      type = "github";
+    };
     twist = {
       flake = false;
       owner = "emacs-twist";
@@ -139,5 +145,5 @@
       type = "github";
     };
   };
-  outputs = { ... }: { };
+  outputs = _: { };
 }

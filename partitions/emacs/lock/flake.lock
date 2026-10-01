@@ -294,6 +294,7 @@
         "s": "s",
         "setup": "setup",
         "solarized-theme": "solarized-theme",
+        "transient": "transient",
         "twist": "twist",
         "vertico": "vertico",
         "with-editor": "with-editor"
@@ -344,6 +345,22 @@
       "original": {
         "owner": "bbatsov",
         "repo": "solarized-emacs",
+        "type": "github"
+      }
+    },
+    "transient": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790431229,
+        "narHash": "sha256-X/C3JbTno5e8JgP7BZoGxFqpDpuJahnARw/soYho4qE=",
+        "owner": "magit",
+        "repo": "transient",
+        "rev": "a789ecb5485085adcbb404c736b95f71dee04329",
+        "type": "github"
+      },
+      "original": {
+        "owner": "magit",
+        "repo": "transient",
         "type": "github"
       }
     },
