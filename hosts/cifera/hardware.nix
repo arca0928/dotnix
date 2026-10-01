@@ -3,6 +3,7 @@
   modulesPath,
   lib,
   config,
+  pkgs,
   ...
 }:
 delib.host {
@@ -84,6 +85,33 @@ delib.host {
       cpu.intel = {
         npu.enable = true;
         updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      };
+
+      graphics = {
+        enable = true;
+
+        extraPackages = [
+          (pkgs.intel-compute-runtime.overrideAttrs (old: {
+            version = "26.35.39758.10";
+
+            src = pkgs.fetchFromGitHub {
+              owner = "intel";
+              repo = "compute-runtime";
+              tag = "26.35.39758.10";
+              hash = "sha256-jPAW4ocbodfRdC8PAvuwd4HFSL6Te/QClDG7XcD3s50=";
+            };
+
+            postFixup = (old.postFixup or "") + ''
+              for f in "$out/lib"/libze_intel_gpu.so*; do
+                [ -f "$f" ] || continue
+
+                patchelf --add-rpath \
+                "${lib.getLib pkgs.intel-graphics-compiler}/lib" \
+                "$f"
+              done
+            '';
+          }))
+        ];
       };
     };
 
