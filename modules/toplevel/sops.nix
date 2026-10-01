@@ -1,4 +1,9 @@
-{ delib, inputs, ... }:
+{
+  delib,
+  inputs,
+  pkgs,
+  ...
+}:
 delib.module {
   name = "sops";
 
@@ -10,6 +15,10 @@ delib.module {
   nixos.ifEnabled = {
     sops.age.sshKeyPaths = [
       "/etc/ssh/ssh_host_ed25519_key"
+    ];
+
+    environment.systemPackages = [
+      pkgs.sops
     ];
   };
 

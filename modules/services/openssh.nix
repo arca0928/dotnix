@@ -1,8 +1,8 @@
-{ delib, host, ... }:
+{ delib, ... }:
 delib.module {
   name = "openssh";
 
-  options = delib.singleEnableOption (host.isDesktop or host.isServer);
+  options = delib.singleEnableOption true;
 
   nixos.ifEnabled =
     { myconfig, ... }:
