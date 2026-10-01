@@ -23,7 +23,8 @@ delib.module {
         enable = true;
         config = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.my-emacs;
         createInitFile = true;
-        earlyInitFile = pkgs.tangleOrgBabelFile "early-init.el" ../../partitions/emacs/early-init.org { };
+        earlyInitFile =
+          inputs.emacs-config.packages.${pkgs.stdenv.hostPlatform.system}.default.earlyInitFile;
         createManifestFile = true;
         emacsclient.enable = cfg.enableServer;
         # EWM already owns the default Emacs daemon socket.
