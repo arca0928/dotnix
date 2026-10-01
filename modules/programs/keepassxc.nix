@@ -18,8 +18,6 @@ delib.module {
 
         GUI = {
           ApplicationTheme = "dark";
-          MinimizeOnClose = true;
-          MinimizeToTray = true;
           ToolButtonStyle = 0;
         };
         Security.IconDownloadFallback = true;
