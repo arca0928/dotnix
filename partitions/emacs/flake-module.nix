@@ -11,6 +11,11 @@
         ];
       };
 
+      # Use EWM's Nix build for both the Lisp files and the Rust module.
+      ewm = pkgs.callPackage "${inputs.ewm}/nix/default.nix" {
+        emacsPackage = profile.emacsPackage;
+      };
+
       profile = {
         lockDir = ./lock;
         initFiles = [ (pkgs.tangleOrgBabelFile "init.el" ./init.org { }) ];
@@ -36,6 +41,11 @@
             extraPackages
             exportManifest
             ;
+          extraSiteStartElisp = pkgs.lib.optionalString pkgs.stdenv.hostPlatform.isLinux (
+            pkgs.lib.concatMapStrings (pkg: ''
+              (add-to-list 'load-path "${pkg}/share/emacs/site-lisp")
+            '') ([ ewm ] ++ ewm.packageRequires)
+          );
           registries = [
             {
               name = "recipes";
@@ -48,7 +58,12 @@
       );
     in
     {
-      packages.my-emacs = package;
+      packages = {
+        my-emacs = package;
+      }
+      // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+        inherit ewm;
+      };
       apps = package.makeApps { lockDirName = "partitions/emacs/lock"; };
     };
 }

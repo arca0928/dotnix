@@ -97,6 +97,26 @@
         "type": "github"
       }
     },
+    "ewm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790775177,
+        "narHash": "sha256-RiD5NOzx71dSgflProxOZ5h4g6IHQ6RuM0kfCyOHilM=",
+        "ref": "refs/heads/master",
+        "rev": "d5bf1e0e8c6b3e7423b88c64db5c199442b7fdb3",
+        "revCount": 1001,
+        "type": "git",
+        "url": "https://codeberg.org/ezemtsov/ewm"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/ezemtsov/ewm"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -631,6 +651,7 @@
       "inputs": {
         "denix": "denix",
         "emacs-overlay": "emacs-overlay",
+        "ewm": "ewm",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "lsp-proxy": "lsp-proxy",

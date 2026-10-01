@@ -9,6 +9,11 @@
     twist.url = "github:emacs-twist/twist.nix";
     org-babel.url = "github:emacs-twist/org-babel";
 
+    ewm = {
+      url = "git+https://codeberg.org/ezemtsov/ewm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     elpa = {
       url = "github:elpa-mirrors/elpa";
       flake = false;

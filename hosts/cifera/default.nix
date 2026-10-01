@@ -21,5 +21,7 @@ delib.host {
     };
   };
 
+  myconfig.programs.emacs.enable = true;
+  myconfig.programs.herdr.enable = false;
   myconfig.services.cloudflared.tokenFile = config.sops.secrets.cloudflared_cifera_token.path;
 }

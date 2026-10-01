@@ -14,7 +14,7 @@ delib.module {
 
   home.always.imports = [ inputs.twist.homeModules.emacs-twist ];
   home.ifEnabled =
-    { cfg, ... }:
+    { cfg, myconfig, ... }:
     {
       home.packages = [
         inputs.lsp-proxy.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -26,7 +26,8 @@ delib.module {
         earlyInitFile = pkgs.tangleOrgBabelFile "early-init.el" ../../partitions/emacs/early-init.org { };
         createManifestFile = true;
         emacsclient.enable = cfg.enableServer;
-        serviceIntegration.enable = cfg.enableServer;
+        # EWM already owns the default Emacs daemon socket.
+        serviceIntegration.enable = cfg.enableServer && !myconfig.programs.ewm.enable;
       };
     };
 }
