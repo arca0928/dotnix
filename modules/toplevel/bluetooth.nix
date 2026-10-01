@@ -5,7 +5,9 @@ delib.module {
   options = delib.singleEnableOption host.bluetoothFeatured;
 
   nixos.ifEnabled = {
-    hardware.bluetooth.enable = true;
-    services.blueman.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
 }
