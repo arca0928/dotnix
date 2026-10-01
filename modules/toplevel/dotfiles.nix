@@ -5,11 +5,11 @@ delib.module {
   options = delib.singleEnableOption true;
 
   home.ifEnabled = {
-    home.file = {
-      ".pi/" = {
-        source = ../../dots/.pi;
-        recursive = true;
-      };
-    };
+    # home.file = {
+    #   ".pi/" = {
+    #     source = ../../dots/.pi;
+    #     recursive = true;
+    #   };
+    # };
   };
 }
