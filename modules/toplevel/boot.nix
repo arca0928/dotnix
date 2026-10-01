@@ -49,7 +49,7 @@ delib.module {
 
         lanzaboote = lib.mkIf (cfg.loader == "systemd-boot") {
           enable = true;
-          configurationLimit = 5;
+          configurationLimit = 4;
           pkiBundle = "/var/lib/sbctl";
 
           autoGenerateKeys.enable = cfg.generateSecureBootKeys;
