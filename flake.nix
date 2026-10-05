@@ -175,7 +175,8 @@
             emacsPackage = emacs.emacs;
           };
           ewmLoadPath = pkgs.writeText "ewm-load-path.el" (
-            pkgs.lib.concatMapStrings (pkg: ''
+            ";;; -*- lexical-binding: t -*-\n"
+            + pkgs.lib.concatMapStrings (pkg: ''
               (add-to-list 'load-path "${pkg}/share/emacs/site-lisp")
             '') ([ ewm ] ++ ewm.packageRequires)
           );
