@@ -39,6 +39,8 @@ delib.host {
       };
       kernelModules = [ "kvm-intel" ];
       extraModulePackages = [ ];
+
+      kernelPackages = pkgs.linuxPackages_latest;
     };
     fileSystems = {
       "/" = {
