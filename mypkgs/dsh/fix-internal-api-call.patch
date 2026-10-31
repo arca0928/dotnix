@@ -1,0 +1,16 @@
+
+diff --git a/packages/boot/app-boot/src/profile-resolution/resolver.ts b/packages/boot/app-boot/src/profile-resolution/resolver.ts
+--- a/packages/boot/app-boot/src/profile-resolution/resolver.ts
++++ b/packages/boot/app-boot/src/profile-resolution/resolver.ts
+@@ -569,7 +569,9 @@
+ }
+ function internalModules(): InternalModules {
+   const require = createRequire(import.meta.url)
+-  const addon = require('node-addon-require-builtin') as { requireBuiltin(moduleId: string): unknown }
++  const addon = process.execArgv.includes('--expose-internals')
++    ? { requireBuiltin: (moduleId: string): unknown => require(moduleId) }
++    : require('node-addon-require-builtin') as { requireBuiltin(moduleId: string): unknown }
+   const esmModule = addon.requireBuiltin('internal/modules/esm/loader') as {
+     getOrInitializeCascadedLoader(): ModuleLoaderV1 | ModuleLoaderV2
+   }
+
