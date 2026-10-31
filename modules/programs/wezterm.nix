@@ -23,21 +23,7 @@ delib.module {
 
       font = lib.generators.mkLuaInline ''
         wezterm.font({
-          family = "Moralerspace Neon",
-          harfbuzz_features = {
-            "+liga",
-            "+calt",
-            "+ss01",
-            "+ss02",
-            "+ss03",
-            "+ss04",
-            "+ss05",
-            "+ss06",
-            "+ss07",
-            "+ss08",
-            "+ss09",
-            "+ss10",
-          },
+          family = "Maple Mono NF JP",
         })
       '';
 
