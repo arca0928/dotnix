@@ -18,6 +18,4 @@ delib.host {
   };
 
   myconfig.services.cloudflared.tokenFile = config.sops.secrets.cloudflared_khaslana_token.path;
-
-  myconfig.programs.emacs.enable = false;
 }
