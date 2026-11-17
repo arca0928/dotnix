@@ -6,7 +6,7 @@
 }:
 delib.host {
   name = "khaslana";
-  type = "desktop";
+  type = "server";
 
   features = [ "wifi" ];
 
