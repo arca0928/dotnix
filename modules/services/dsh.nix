@@ -33,7 +33,6 @@ delib.module {
       account = config.users.users.${cfg.user};
       dataDir = if cfg.dataDir == null then "${account.home}/.dsh" else cfg.dataDir;
       workingDirectory = if cfg.workingDirectory == null then account.home else cfg.workingDirectory;
-      # JSON is valid YAML; no conversion tool is needed for static patches.
       servicePatch = pkgs.writeText "dsh-service.patch.yml" (builtins.toJSON cfg.extraPatches);
       authPlugin = pkgs.writeText "dsh-chatgpt-auth.mjs" (builtins.readFile ./dsh/chatgpt-auth.mjs);
       authPatch = pkgs.writeText "dsh-chatgpt.patch.yml" (
@@ -44,6 +43,10 @@ delib.module {
           }
           {
             id = "sdk-jsonrpc-server";
+            disabled = true;
+          }
+          {
+            id = "schedule";
             disabled = true;
           }
           {
@@ -91,7 +94,6 @@ delib.module {
           echo 'Cannot identify the current DSH invocation.' >&2
           exit 1
         fi
-        # Older invocations contain launch tokens invalidated by a restart.
         url=$(${pkgs.systemd}/bin/journalctl --quiet --unit=dsh.service \
           "_SYSTEMD_INVOCATION_ID=$invocation" --output=cat --no-pager \
           | ${pkgs.gnused}/bin/sed -nE 's,.*(https?://[^[:space:]]+[?&]token=[A-Za-z0-9_-]+).*,\1,p' \
@@ -161,7 +163,6 @@ delib.module {
           workingDirectory
         ];
 
-        # Match interactive sessions, including tools installed for this user.
         path = [
           "/etc/profiles/per-user/${cfg.user}"
           "/run/current-system/sw"

@@ -1,4 +1,3 @@
-// Use DSH's authorization and credential services, including its refresh locking.
 export function apply(ctx) {
   ctx.inject(['authorization', 'credentials', 'appReady', 'appExit'], child => {
     child.effect(() => child.appReady.onReady(() => {

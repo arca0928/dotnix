@@ -17,9 +17,9 @@
   ...
 }:
 let
-  version = "0.2.1-rc.2";
-  srcHash = "sha256-jYvld5TA4KNpfCZjB6RKQonydPcRqiQQAfWxFA0qWlY=";
-  depsHash = "sha256-C9Aw9AS4r7zubaEuT6mLXQ+AhhMVlTxPZRKTpzRUkcU=";
+  version = "0.2.2-rc.3";
+  srcHash = "sha256-OPKLXuDDcIy7z5qf/WE5REsPOu9KWlAuU3uMs+e89LY=";
+  depsHash = "sha256-md84fDBaEnqdQxlsTpaGTkGWWH1dLUGwlSp0EJ+aOA4=";
 
   pnpm = pnpm_11.override {
     nodejs-slim = nodejs-slim_24;
