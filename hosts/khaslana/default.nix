@@ -26,13 +26,24 @@ delib.host {
       home = "/home/agent";
       homeMode = "0700";
       shell = pkgs.zsh;
-      packages = [ pkgs.git ];
+      linger = true;
+      packages = with pkgs; [
+        git
+        codex
+        pi-coding-agent
+        herdr
+      ];
     };
 
     systemd.tmpfiles.rules = [
       "d /srv/projects 2770 root projects -"
       # Inherit group write access even when a tool uses a restrictive umask.
       "a+ /srv/projects - - - - default:user::rwx,default:group::rwx,default:mask::rwx,default:other::---"
+
+      "d /home/agent/.codex 0700 agent agent -"
+      # Seed once; keep OAuth state mutable.
+      "f /home/agent/.codex/config.toml 0600 agent agent - cli_auth_credentials_store = \"file\""
+      "z /home/agent/.codex/auth.json 0600 agent agent -"
     ];
 
     sops.defaultSopsFile = ../../secrets/hosts/khaslana.yaml;
