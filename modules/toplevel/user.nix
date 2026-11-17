@@ -8,6 +8,11 @@ delib.module {
       inherit (myconfig.constants) username;
     in
     {
+      virtualisation.vmVariant = {
+        users.mutableUsers = false;
+        users.users.${username}.password = username;
+      };
+
       users = {
         groups.${username} = { };
         groups.cloudflared = { };
