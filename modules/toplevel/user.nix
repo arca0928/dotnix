@@ -15,6 +15,7 @@ delib.module {
         users.${username} = {
           isNormalUser = true;
           home = "/home/${username}";
+          homeMode = "0700";
           shell = pkgs.zsh;
           extraGroups = [
             "wheel"
