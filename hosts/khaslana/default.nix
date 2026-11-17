@@ -69,13 +69,35 @@ delib.host {
       extraPatches = [
         {
           id = "llm-pi-ai";
-          config.providers.openai-codex = { };
+          config.providers.openai-codex = {
+            # Explicit lists replace the catalog: retain all installed models.
+            models =
+              map (id: { inherit id; }) [
+                "gpt-5.3-codex-spark"
+                "gpt-5.5"
+                "gpt-5.6-luna"
+                "gpt-5.6-sol"
+                "gpt-5.6-terra"
+                "gpt-6-astra"
+                "gpt-6-luna"
+                "gpt-6-sol"
+                "gpt-6.1-sol"
+              ]
+              ++ [
+                {
+                  id = "gpt-6.1-terra";
+                  name = "GPT-6.1 Terra";
+                  # Capacity and modalities use adapter defaults until verified.
+                  reasoningEfforts.medium = "medium";
+                }
+              ];
+          };
         }
         {
           id = "agent-default-model";
           config = {
             provider = "openai-codex";
-            model = "gpt-6-sol";
+            model = "gpt-6.1-sol";
             reasoningEffort = "medium";
           };
         }
