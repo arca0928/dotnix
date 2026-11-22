@@ -1,5 +1,6 @@
 {
   delib,
+  host,
   pkgs,
   inputs,
   config,
@@ -7,7 +8,7 @@
 }:
 delib.module {
   name = "programs.ewm";
-  options = delib.singleEnableOption pkgs.stdenv.hostPlatform.isLinux;
+  options = delib.singleEnableOption (host.guiFeatured && pkgs.stdenv.hostPlatform.isLinux);
 
   nixos.always.imports = [
     inputs.ewm.nixosModules.default

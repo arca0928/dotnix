@@ -125,6 +125,7 @@
                   "xremap"
                 ];
                 defaultByHostType = {
+                  server = [ "cli" ];
                   desktop = [
                     "cli"
                     "gui"

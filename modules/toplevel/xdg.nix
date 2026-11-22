@@ -1,13 +1,15 @@
 {
   delib,
-  inputs,
+  host,
   pkgs,
   ...
 }:
 delib.module {
   name = "xdg";
 
-  nixos.always = {
+  options = delib.singleEnableOption host.guiFeatured;
+
+  nixos.ifEnabled = {
     xdg.portal = {
       enable = true;
       config = {
@@ -23,7 +25,7 @@ delib.module {
       ];
     };
   };
-  home.always = {
+  home.ifEnabled = {
     xdg.userDirs = {
       enable = true;
       createDirectories = true;

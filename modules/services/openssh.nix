@@ -6,7 +6,15 @@ delib.module {
 
   nixos.ifEnabled =
     { myconfig, ... }:
+    let
+      inherit (myconfig.constants) username;
+    in
     {
+      users.users.${username}.openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFS3lm5LcPgcRXPZmVtlQ903o9czBQLXC4DH+faoVHXD"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA6cac6ujAYARL5iyNrbsAoTaaUkplJ0MNWqufw8Kh5T"
+      ];
+
       services.openssh = {
         enable = true;
 
@@ -19,7 +27,8 @@ delib.module {
 
         settings = {
           PasswordAuthentication = false;
-          AllowUsers = [ "${myconfig.constants.username}" ];
+          KbdInteractiveAuthentication = false;
+          AllowUsers = [ username ];
           PermitRootLogin = "no";
         };
       };

@@ -6,6 +6,6 @@ delib.module {
     username = readOnly (strOption "arca");
     useremail = readOnly (strOption "arca@arca0928.dev");
     userGitEmail = readOnly (strOption "git@arca0928.dev");
-    userGitName = readOnly (strOption "arca0928");
+    userGitName = readOnly (strOption "arca");
   };
 }

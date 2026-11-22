@@ -8,6 +8,11 @@ delib.module {
       inherit (myconfig.constants) username;
     in
     {
+      virtualisation.vmVariant = {
+        users.mutableUsers = false;
+        users.users.${username}.password = username;
+      };
+
       users = {
         groups.${username} = { };
         groups.cloudflared = { };
@@ -15,6 +20,7 @@ delib.module {
         users.${username} = {
           isNormalUser = true;
           home = "/home/${username}";
+          homeMode = "0700";
           shell = pkgs.zsh;
           extraGroups = [
             "wheel"
